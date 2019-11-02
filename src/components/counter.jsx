@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 class Counter extends Component {
   render() {
-    console.log('props', this.props);
+    console.log('Counter - rendered');
+    // console.log('props', this.props);
 
     return (
       <div>
