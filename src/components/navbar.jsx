@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Title from './title';
 const NavBar = ({ totalCounters }) => {
   console.log('Navbar - rendered');
 
@@ -10,6 +11,7 @@ const NavBar = ({ totalCounters }) => {
           {totalCounters}
         </span>
       </a>
+      <Title />
     </nav>
   );
 };
