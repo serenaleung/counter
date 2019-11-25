@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 export default function Title() {
   const [title, updateTitle] = useState('my Title');
   const [inputVal, updateInput] = useState('');
+  const [list, updateList] = useState([]);
+
   return (
     <div>
       <h3>{title}</h3>
@@ -11,7 +13,10 @@ export default function Title() {
         value={inputVal}
         onChange={e => updateInput(e.target.value)}
       />
-      <button onClick={() => updateTitle(inputVal)}>Button</button>
+      <button onClick={() => updateList(inputVal)}>Button</button>
+      {list.map((item, i) => (
+        <div key={i}>{item}</div>
+      ))}
     </div>
   );
 }
