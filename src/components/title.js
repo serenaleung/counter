@@ -13,7 +13,14 @@ export default function Title() {
         value={inputVal}
         onChange={e => updateInput(e.target.value)}
       />
-      <button onClick={() => updateList(inputVal)}>Button</button>
+      <button
+        onClick={() => {
+          updateList([...list, inputVal]);
+          updateInput('');
+        }}
+      >
+        Add
+      </button>
       {list.map((item, i) => (
         <div key={i}>{item}</div>
       ))}
