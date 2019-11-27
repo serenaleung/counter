@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Title() {
   const [title, updateTitle] = useState('my Title');
   const [inputVal, updateInput] = useState('');
   const [list, updateList] = useState([]);
+
+  useEffect(() => {
+    console.log('effect run');
+  }, [list, inputVal]);
 
   return (
     <div>
