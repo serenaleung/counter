@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
-// import Title from './components/title';
+import List from './components/list';
 import './App.css';
 
 class App extends Component {
@@ -59,6 +59,7 @@ class App extends Component {
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
           />
+          <List />
         </main>
       </React.Fragment>
     );
