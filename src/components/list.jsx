@@ -6,7 +6,7 @@ export default function Title() {
   const [title] = useState('List');
   const [inputVal, updateInput] = useState('');
   const [list, updateList] = useState([]);
-  const [icon, hoverIcon] = useState(false);
+  const [icon, hoverIcon] = useState(IconClose);
 
   useEffect(() => {
     console.log('effect run');
@@ -33,12 +33,14 @@ export default function Title() {
           {item}
           <button
             className='noBorder'
+            onMouseEnter={() => hoverIcon(IconCloseHover)}
+            onMouseLeave={() => hoverIcon(IconClose)}
             onClick={() => {
               list.splice(i, 1);
               updateList([...list]);
             }}
           >
-            <img className='iconSize' src={IconClose} alt='close icon' />
+            <img className='iconSize' src={icon} alt='close icon' />
           </button>
         </div>
       ))}
