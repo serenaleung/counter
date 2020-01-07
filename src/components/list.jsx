@@ -17,6 +17,7 @@ export default function Title() {
         type='text'
         value={inputVal}
         onChange={e => updateInput(e.target.value)}
+        className='inputList'
       />
       <button
         onClick={() => {

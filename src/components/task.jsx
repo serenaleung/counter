@@ -6,14 +6,12 @@ export default function Task() {
   const [icon, hoverIcon] = useState(IconClose);
 
   return (
-    <div>
-      <button
-        className='noBorder'
-        onMouseEnter={() => hoverIcon(IconCloseHover)}
-        onMouseLeave={() => hoverIcon(IconClose)}
-      >
-        <img className='iconSize' src={icon} alt='close icon' />
-      </button>
+    <div
+      className='noBorder'
+      onMouseEnter={() => hoverIcon(IconCloseHover)}
+      onMouseLeave={() => hoverIcon(IconClose)}
+    >
+      <img className='iconSize' src={icon} alt='close icon' />
     </div>
   );
 }
