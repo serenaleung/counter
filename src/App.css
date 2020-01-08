@@ -36,3 +36,15 @@
   outline: none;
   margin-bottom: 0.5rem;
 }
+
+img {
+  width: 100%;
+}
+
+.listItemTitle {
+  margin: 0.5rem 0 0;
+}
+
+.fontSizeSmaller {
+  font-size: smaller;
+}

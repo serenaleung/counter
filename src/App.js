@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
 import List from './components/list';
+import Items from './components/items';
 import './App.css';
 
 class App extends Component {
@@ -60,6 +61,7 @@ class App extends Component {
             onDelete={this.handleDelete}
           />
           <List />
+          <Items></Items>
         </main>
       </React.Fragment>
     );
