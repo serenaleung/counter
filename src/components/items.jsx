@@ -1,7 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 
 export default function Items() {
-  const [items, filteredItems] = useState([
+  const items = [
     {
       link:
         'https://res.cloudinary.com/guess-img/image/upload/w_371,h_499,c_fill,g_auto/v1/NA/Style/ECOMM/01G5105348Z-G6Y1',
@@ -20,22 +20,21 @@ export default function Items() {
       name: 'Pasha Cold-Shoulder Tie Blouse',
       price: '158.00 CAD'
     }
-  ]);
+  ];
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredItems, setFilteredItems] = useState([]);
 
   const handleChange = e => {
-    if (e.target.value !== '') {
-      let filteredItems = items.filter(item => {
-        const lc = item.name.toLowerCase();
-        const filter = e.target.value.toLowerCase();
-        console.log('item , lc.includes(filter)', item, lc.includes(filter));
-        return lc.includes(filter);
-      });
-    } else {
-      let filteredItems = items;
-      console.log('filteredItems', filteredItems);
-      return filteredItems;
-    }
+    setSearchQuery(e.target.value.toLowerCase());
   };
+
+  useEffect(() => {
+    const filtered = items.filter(item =>
+      item.name.toLowerCase().includes(searchQuery)
+    );
+    setFilteredItems(filtered);
+  }, [searchQuery]);
 
   return (
     <div className='container'>
@@ -43,21 +42,15 @@ export default function Items() {
         <input onChange={handleChange} placeholder='Search'></input>
       </div>
       <div className='row'>
-        <div className='col-sm'>
-          <img src={items[0].link} alt='item1' />
-          <p className='listItemTitle fontSizeSmaller'>{items[0].name}</p>
-          <p className='fontSizeSmaller'>{items[0].price}</p>
-        </div>
-        <div className='col-sm'>
-          <img src={items[1].link} alt='item2' />
-          <p className='listItemTitle fontSizeSmaller'>{items[1].name}</p>
-          <p className='fontSizeSmaller'>{items[1].price}</p>
-        </div>
-        <div className='col-sm'>
-          <img src={items[2].link} alt='item3' />
-          <p className='listItemTitle fontSizeSmaller'>{items[2].name}</p>
-          <p className='fontSizeSmaller'>{items[2].price}</p>
-        </div>
+        {Object.keys(filteredItems).map((name, i) => (
+          <div className='col-sm' key={i}>
+            <img src={filteredItems[i].link} alt='item1' />
+            <p className='listItemTitle fontSizeSmaller'>
+              {filteredItems[i].name}
+            </p>
+            <p className='fontSizeSmaller'>{filteredItems[i].price}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
