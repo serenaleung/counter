@@ -29,6 +29,12 @@ export default function Items() {
     setSearchQuery(e.target.value.toLowerCase());
   };
 
+  const toggleEmptyCol = () => {
+    let classes = '';
+    classes += filteredItems.length < 3 ? 'col-sm' : 'displayNone';
+    return classes;
+  };
+
   useEffect(() => {
     const filtered = items.filter(item =>
       item.name.toLowerCase().includes(searchQuery)
@@ -44,12 +50,16 @@ export default function Items() {
       <div className='row'>
         {Object.keys(filteredItems).map((name, i) => (
           <div className='col-sm' key={i}>
+            {/* <div className='blockFill'></div> */}
             <img src={filteredItems[i].link} alt='item1' />
             <p className='listItemTitle fontSizeSmaller'>
               {filteredItems[i].name}
             </p>
             <p className='fontSizeSmaller'>{filteredItems[i].price}</p>
           </div>
+        ))}
+        {[1, 2].map(empty => (
+          <div className={toggleEmptyCol()}></div>
         ))}
       </div>
     </div>

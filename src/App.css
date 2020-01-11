@@ -48,3 +48,12 @@ img {
 .fontSizeSmaller {
   font-size: smaller;
 }
+
+.displayNone {
+  display: none;
+}
+
+.blockFill {
+  background: lavender;
+  height: 100%;
+}
