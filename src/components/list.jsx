@@ -5,20 +5,6 @@ export default function Title() {
   const [title] = useState('List');
   const [inputVal, updateInput] = useState('');
   const [list, updateList] = useState([]);
-  const handleChange = e => {
-    if (e.target.value !== '') {
-      let filterList = list.filter(list => {
-        const lc = list.toLowerCase();
-        const filter = e.target.value.toLowerCase();
-        console.log('list, lc.includes(filter)', list, lc.includes(filter));
-        return lc.includes(filter);
-      });
-    } else {
-      // let filterList = list;
-      console.log('filterList', list);
-      return list;
-    }
-  };
 
   useEffect(() => {
     console.log('effect run');
@@ -27,7 +13,6 @@ export default function Title() {
   return (
     <div>
       <h3>{title}</h3>
-      <input onChange={handleChange} placeholder='Search'></input>
       <input
         type='text'
         value={inputVal}
