@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-const NavBar = ({ totalCounters }) => {
-  console.log('Navbar - rendered');
+import Search from './search';
+const NavBar = ({ totalCounters, onChange, searchQuery }) => {
+  // console.log('Navbar - rendered');
 
   return (
     <nav className='navbar navbar-light bg-light'>
@@ -11,12 +12,7 @@ const NavBar = ({ totalCounters }) => {
         </span>
       </a>
       <form className='form-inline'>
-        <input
-          className='form-control mr-sm-2'
-          type='search'
-          placeholder='Search'
-          aria-label='Search'
-        />
+        <Search onChange={onChange} value={searchQuery}></Search>
         <button
           className='btn btn-outline-secondary my-2 my-sm-0'
           type='submit'

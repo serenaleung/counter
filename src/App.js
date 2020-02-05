@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
 import List from './components/list';
@@ -24,6 +24,8 @@ class App extends Component {
     console.log('App - mounted');
   }
 
+  // const [searchQuery, setSearchQuery] = useState('');
+
   handleIncrement = counter => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
@@ -46,11 +48,18 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  onChangeParent = e => {
+    let searchQuery = e.target.value.toLowerCase();
+    this.setState({ searchQuery });
+  };
+
   render() {
     console.log('App - rendered');
     return (
       <React.Fragment>
         <NavBar
+          onChange={this.onChangeParent}
+          value={this.searchQuery}
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
         <main className='container'>
@@ -61,7 +70,9 @@ class App extends Component {
             onDelete={this.handleDelete}
           />
           <List />
-          <Items></Items>
+          <Items searchQuery={this.state.searchQuery}>
+            {console.log('this.state.searchQuery', this.state.searchQuery)}
+          </Items>
         </main>
       </React.Fragment>
     );

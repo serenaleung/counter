@@ -1,6 +1,6 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function Items() {
+export default function Items(props) {
   const items = [
     {
       link:
@@ -22,12 +22,12 @@ export default function Items() {
     }
   ];
 
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
 
-  const handleChange = e => {
-    setSearchQuery(e.target.value.toLowerCase());
-  };
+  // const handleChange = e => {
+  //   setSearchQuery(e.target.value.toLowerCase());
+  // };
 
   const toggleEmptyCol = () => {
     let classes = '';
@@ -35,22 +35,25 @@ export default function Items() {
     return classes;
   };
 
-  useEffect(() => {
-    const filtered = items.filter(item =>
-      item.name.toLowerCase().includes(searchQuery)
-    );
-    setFilteredItems(filtered);
-  }, [searchQuery]);
+  useEffect(
+    searchQuery => {
+      const filtered = items.filter(item =>
+        item.name.toLowerCase().includes(props.searchQuery)
+      );
+      setFilteredItems(filtered);
+    },
+    [props.searchQuery]
+  );
 
   return (
     <div className='container'>
-      <div className='row'>
+      {/* <div className='row'>
         <input onChange={handleChange} placeholder='Search'></input>
-      </div>
+      </div> */}
       <div className='row'>
         {Object.keys(filteredItems).map((name, i) => (
           <div className='col-sm' key={i}>
-            {/* <div className='blockFill'></div> */}
+            <div className='blockFill'></div>
             <img src={filteredItems[i].link} alt='item1' />
             <p className='listItemTitle fontSizeSmaller'>
               {filteredItems[i].name}
