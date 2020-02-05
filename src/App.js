@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
 import List from './components/list';
@@ -23,8 +23,6 @@ class App extends Component {
   componentDidMount() {
     console.log('App - mounted');
   }
-
-  // const [searchQuery, setSearchQuery] = useState('');
 
   handleIncrement = counter => {
     const counters = [...this.state.counters];
@@ -70,9 +68,7 @@ class App extends Component {
             onDelete={this.handleDelete}
           />
           <List />
-          <Items searchQuery={this.state.searchQuery}>
-            {console.log('this.state.searchQuery', this.state.searchQuery)}
-          </Items>
+          <Items searchQuery={this.state.searchQuery}></Items>
         </main>
       </React.Fragment>
     );

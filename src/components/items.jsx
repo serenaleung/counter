@@ -22,12 +22,7 @@ export default function Items(props) {
     }
   ];
 
-  // const [searchQuery, setSearchQuery] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
-
-  // const handleChange = e => {
-  //   setSearchQuery(e.target.value.toLowerCase());
-  // };
 
   const toggleEmptyCol = () => {
     let classes = '';
@@ -47,13 +42,9 @@ export default function Items(props) {
 
   return (
     <div className='container'>
-      {/* <div className='row'>
-        <input onChange={handleChange} placeholder='Search'></input>
-      </div> */}
       <div className='row'>
         {Object.keys(filteredItems).map((name, i) => (
           <div className='col-sm' key={i}>
-            <div className='blockFill'></div>
             <img src={filteredItems[i].link} alt='item1' />
             <p className='listItemTitle fontSizeSmaller'>
               {filteredItems[i].name}

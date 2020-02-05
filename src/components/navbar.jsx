@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Search from './search';
 const NavBar = ({ totalCounters, onChange, searchQuery }) => {
-  // console.log('Navbar - rendered');
-
   return (
     <nav className='navbar navbar-light bg-light'>
       <a className='navbar-brand' href='#'>
