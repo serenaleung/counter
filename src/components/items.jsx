@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 
 export default function Items(props) {
   const items = [
@@ -32,19 +32,26 @@ export default function Items(props) {
 
   useEffect(
     searchQuery => {
-      const filtered = items.filter(item =>
-        item.name.toLowerCase().includes(props.searchQuery)
-      );
-      setFilteredItems(filtered);
+      if (props.searchQuery !== undefined) {
+        let filtered = items.filter(item =>
+          item.name.toLowerCase().includes(props.searchQuery)
+        );
+        setFilteredItems(filtered);
+      } else {
+        let filtered = items;
+        setFilteredItems(filtered);
+      }
     },
     [props.searchQuery]
   );
 
   return (
     <div className='container'>
+      {console.log('filteredItems in return', filteredItems)}
       <div className='row'>
-        {Object.keys(filteredItems).map((name, i) => (
+        {Object.keys(filteredItems).map(i => (
           <div className='col-sm' key={i}>
+            <div className='blockFill'></div>
             <img src={filteredItems[i].link} alt='item1' />
             <p className='listItemTitle fontSizeSmaller'>
               {filteredItems[i].name}
