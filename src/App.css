@@ -21,6 +21,57 @@
   color: #09d3ac;
 }
 
+/* CSS Grid */
+.grid-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-areas:
+    'nav     nav      nav'
+    'sidebar content  content'
+    'sidebar content  content'
+    'footer  footer   footer';
+  grid-template-columns: 300px;
+  grid-template-rows: 60px 1fr;
+}
+
+/* @media only screen and (min-width: 600px) {
+  body {
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: 1fr 90px;
+  }
+} */
+
+.header {
+  grid-area: nav;
+  background: teal;
+  display: grid;
+  grid-template-columns: 7vw 1fr 10fr 1fr 2vw;
+  grid-template-rows: 70px auto;
+  align-items: center;
+}
+
+/* .header > * {
+  display: flex;
+  place-self: center space-between;
+} */
+
+.main {
+  grid-area: content;
+  background: palevioletred;
+  /* grid-template-columns: repeat(3, auto); */
+}
+
+.footer {
+  grid-area: footer;
+  background: cornflowerblue;
+}
+
+.aside {
+  grid-area: sidebar;
+  background: greenyellow;
+}
+
+/* Other Styling */
 .noBorder {
   border: none;
   outline: none !important;

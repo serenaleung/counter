@@ -2,9 +2,9 @@ import React from 'react';
 import Search from './search';
 const NavBar = ({ totalCounters, onChange, searchQuery }) => {
   return (
-    <nav className='navbar navbar-light bg-light'>
-      <a className='navbar-brand' href='#'>
-        Navbar{' '}
+    <nav className='header'>
+      <a href='#'>
+        LOGO{' '}
         <span className='badge badge-pill badge-secondary'>
           {totalCounters}
         </span>

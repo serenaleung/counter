@@ -54,13 +54,19 @@ class App extends Component {
   render() {
     console.log('App - rendered');
     return (
-      <React.Fragment>
+      <div className='grid-container'>
         <NavBar
           onChange={this.onChangeParent}
           value={this.searchQuery}
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
-        <main className='container'>
+        <div className='aside'>
+          <div>side</div>
+          <div>side</div>
+          <div>side</div>
+          <div>side</div>
+        </div>
+        <main>
           <Counters
             counters={this.state.counters}
             onReset={this.handleReset}
@@ -70,7 +76,11 @@ class App extends Component {
           <List />
           <Items searchQuery={this.state.searchQuery}></Items>
         </main>
-      </React.Fragment>
+        <div className='footer'>
+          <div>footer</div>
+          <div>footer</div>
+        </div>
+      </div>
     );
   }
 }
