@@ -8,9 +8,9 @@ export default function Search(props) {
   return (
     <div>
       <input
-        className='form-control mr-sm-2'
-        type='search'
-        placeholder='Search'
+        className='bp3-input'
+        placeholder='Search items...'
+        type='text'
         aria-label='Search'
         value={props.searchQuery}
         onChange={onChangeChild}

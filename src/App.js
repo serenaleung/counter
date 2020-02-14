@@ -67,13 +67,13 @@ class App extends Component {
           <div>side</div>
         </div>
         <main>
-          <Counters
+          {/* <Counters
             counters={this.state.counters}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
           />
-          <List />
+          <List /> */}
           <Items searchQuery={this.state.searchQuery}></Items>
         </main>
         <div className='footer'>
