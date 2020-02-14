@@ -24,12 +24,6 @@ export default function Items(props) {
 
   const [filteredItems, setFilteredItems] = useState([]);
 
-  const toggleEmptyCol = () => {
-    let classes = '';
-    classes += filteredItems.length < 3 ? 'col-sm' : 'displayNone';
-    return classes;
-  };
-
   useEffect(
     searchQuery => {
       if (props.searchQuery !== undefined) {
@@ -46,11 +40,11 @@ export default function Items(props) {
   );
 
   return (
-    <div className='container'>
+    <div>
       {console.log('filteredItems in return', filteredItems)}
-      <div className='row'>
+      <div className='row main'>
         {Object.keys(filteredItems).map(i => (
-          <div className='col-sm' key={i}>
+          <div className='displayGrid' key={i}>
             <div className='blockFill'></div>
             <img src={filteredItems[i].link} alt='item1' />
             <p className='listItemTitle fontSizeSmaller'>
@@ -58,9 +52,6 @@ export default function Items(props) {
             </p>
             <p className='fontSizeSmaller'>{filteredItems[i].price}</p>
           </div>
-        ))}
-        {[1, 2].map(empty => (
-          <div className={toggleEmptyCol()}></div>
         ))}
       </div>
     </div>
