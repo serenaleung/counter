@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
 import List from './components/list';
+import Sort from './components/sort';
 import Items from './components/items';
 import './App.css';
 
@@ -51,6 +52,10 @@ class App extends Component {
     this.setState({ searchQuery });
   };
 
+  handleChangeSort = e => {
+    this.setState({ sortValue: e.target.value });
+  };
+
   render() {
     console.log('App - rendered');
     return (
@@ -66,7 +71,7 @@ class App extends Component {
           <div>side</div>
           <div>side</div>
         </div>
-        <main>
+        <main className='paddingContent'>
           {/* <Counters
             counters={this.state.counters}
             onReset={this.handleReset}
@@ -74,7 +79,11 @@ class App extends Component {
             onDelete={this.handleDelete}
           />
           <List /> */}
-          <Items searchQuery={this.state.searchQuery}></Items>
+          <Sort onChange={this.handleChangeSort}></Sort>
+          <Items
+            searchQuery={this.state.searchQuery}
+            sortValue={this.state.sortValue}
+          ></Items>
         </main>
         <div className='footer'>
           <div>footer</div>
