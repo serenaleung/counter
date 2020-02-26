@@ -35,57 +35,44 @@ export default function Items(props) {
   ];
 
   const [filteredItems, setFilteredItems] = useState([]);
-  const [filteredPrice, setFilteredPrice] = useState([]);
 
   useEffect(() => {
     if (props.searchQuery !== undefined) {
-      let filtered = items.filter(item =>
-        item.name.toLowerCase().includes(props.searchQuery)
-      );
+      let filtered = [...items]
+        .filter(item => item.name.toLowerCase().includes(props.searchQuery))
+        .sort((a, b) => {
+          if (props.sortValue === '2') {
+            return b.price - a.price;
+          } else if (props.sortValue === '3') {
+            return a.price - b.price;
+          }
+        });
       setFilteredItems(filtered);
     } else {
-      let filtered = items;
+      let filtered = [...items].sort((a, b) => {
+        if (props.sortValue === '2') {
+          return b.price - a.price;
+        } else if (props.sortValue === '3') {
+          return a.price - b.price;
+        }
+      });
       setFilteredItems(filtered);
     }
-  }, [props.searchQuery]);
-
-  useEffect(() => {
-    const next = [...items].sort((a, b) => {
-      if (props.sortValue === '2') {
-        return a.price - b.price;
-      } else if (props.sortValue === '3') {
-        return b.price - a.price;
-      }
-    });
-    setFilteredPrice(next);
-  }, [props.sortValue]);
+  }, [props.searchQuery, props.sortValue]);
 
   return (
     <div>
-      {/* <div className='row main'>
+      <div className='row main'>
         {Object.keys(filteredItems).map(i => (
           <div className='displayGrid' key={i}>
-            <div className='blockFill'></div>
             <img src={filteredItems[i].link} alt='item1' />
             <p className='listItemTitle fontSizeSmaller'>
               {filteredItems[i].name}
             </p>
             <p className='fontSizeSmaller'>{filteredItems[i].price} CAD</p>
           </div>
-        ))} */}
-      <div className='row main'>
-        {Object.keys(filteredPrice).map(i => (
-          <div className='displayGrid' key={i}>
-            <div className='blockFill'></div>
-            <img src={filteredPrice[i].link} alt='item1' />
-            <p className='listItemTitle fontSizeSmaller'>
-              {filteredPrice[i].name}
-            </p>
-            <p className='fontSizeSmaller'>{filteredPrice[i].price} CAD</p>
-          </div>
         ))}
       </div>
     </div>
-    // </div>
   );
 }
