@@ -3,6 +3,7 @@ import NavBar from './components/navbar';
 import Counters from './components/counters';
 import List from './components/list';
 import Sort from './components/sort';
+import Filter from './components/filter';
 import Items from './components/items';
 import './App.css';
 
@@ -65,12 +66,7 @@ class App extends Component {
           value={this.searchQuery}
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
-        <div className='aside'>
-          <div>side</div>
-          <div>side</div>
-          <div>side</div>
-          <div>side</div>
-        </div>
+        <Filter></Filter>
         <main className='paddingContent'>
           {/* <Counters
             counters={this.state.counters}
