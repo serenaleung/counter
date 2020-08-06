@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Collapse } from '@blueprintjs/core';
 
 export default function Filter(props) {
   const [isOpen, setIsOpen] = useState(true);
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(null);
   const sizes = ['XS', 'S', 'M', 'L', 'Xl', 'XXL'];
-
+  let classes = ['filterSizeButton'];
   const handleOpenClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleClassClick = () => {
-    setClicked(!clicked);
-    getSizeClasses();
-  };
-
-  const getSizeClasses = i => {
+  const getSizeClasses = (i) => {
     let sizeClasses = 'filterSizeButton ';
-    sizeClasses += clicked ? 'filterSizeButtonClicked' : '';
-    return sizeClasses;
+    if (clicked === i) {
+      if (sizeClasses.includes('filterSizeButtonClicked')) {
+        console.log('true, i', i);
+        return classes;
+      } else {
+        console.log('false, i', i);
+        return (sizeClasses += 'filterSizeButtonClicked');
+      }
+    } else {
+      console.log('all else, i', i);
+      return classes;
+    }
   };
 
   return (
@@ -32,13 +37,13 @@ export default function Filter(props) {
       <Collapse isOpen={!isOpen}>
         <div className='row'>
           {sizes.map((size, i) => (
-            <div
-              className={getSizeClasses()}
+            <input
+              type='button'
+              value={size}
+              className={getSizeClasses(i)}
               key={i}
-              onClick={handleClassClick}
-            >
-              {size}
-            </div>
+              onClick={() => setClicked(i)}
+            />
           ))}
         </div>
       </Collapse>
