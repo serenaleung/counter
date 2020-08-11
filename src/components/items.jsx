@@ -4,34 +4,34 @@ export default function Items(props) {
   const items = [
     {
       link:
-        'https://res.cloudinary.com/guess-img/image/upload/w_371,h_499,c_fill,g_auto/v1/NA/Style/ECOMM/01G5105348Z-G6Y1',
+        'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/01G5105348Z-G6Y1?pgw=1&pgwact=1',
       name: 'Laurie Sweater Top',
-      price: '138.00'
+      price: '138.00',
     },
     {
       link:
         'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/W93R61R1NW1-CLGM-ALT1',
       name: 'Alivia Asymmetrical Ribbed Sweater',
-      price: '79.00'
+      price: '79.00',
     },
     {
       link:
         'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/W9RR00R1NN2-G61B',
       name: 'Pasha Cold-Shoulder Tie Blouse',
-      price: '158.00'
+      price: '158.00',
     },
     {
       link:
         'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/W93R61R1NW1-CLGM-ALT1',
       name: 'Alivia Asymmetrical Ribbed Sweater',
-      price: '79.00'
+      price: '79.00',
     },
     {
       link:
         'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/W9RR00R1NN2-G61B',
       name: 'Pasha Cold-Shoulder Tie Blouse',
-      price: '158.00'
-    }
+      price: '158.00',
+    },
   ];
 
   const [filteredItems, setFilteredItems] = useState([]);
@@ -39,7 +39,7 @@ export default function Items(props) {
   useEffect(() => {
     if (props.searchQuery !== undefined) {
       let filtered = [...items]
-        .filter(item => item.name.toLowerCase().includes(props.searchQuery))
+        .filter((item) => item.name.toLowerCase().includes(props.searchQuery))
         .sort((a, b) => {
           if (props.sortValue === '2') {
             return b.price - a.price;
@@ -63,7 +63,7 @@ export default function Items(props) {
   return (
     <div>
       <div className='row main'>
-        {Object.keys(filteredItems).map(i => (
+        {Object.keys(filteredItems).map((i) => (
           <div className='displayGrid' key={i}>
             <img src={filteredItems[i].link} alt='item1' />
             <p className='listItemTitle fontSizeSmaller'>
