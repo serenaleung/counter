@@ -13,8 +13,8 @@ class App extends Component {
       { id: 1, value: 4 },
       { id: 2, value: 0 },
       { id: 3, value: 0 },
-      { id: 4, value: 0 }
-    ]
+      { id: 4, value: 0 },
+    ],
   };
 
   constructor() {
@@ -26,7 +26,7 @@ class App extends Component {
     console.log('App - mounted');
   }
 
-  handleIncrement = counter => {
+  handleIncrement = (counter) => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
@@ -35,27 +35,32 @@ class App extends Component {
   };
 
   handleReset = () => {
-    const counters = this.state.counters.map(c => {
+    const counters = this.state.counters.map((c) => {
       c.value = 0;
       return c;
     });
     this.setState({ counters });
   };
 
-  handleDelete = counterId => {
+  handleDelete = (counterId) => {
     console.log('Event handler called', counterId);
-    const counters = this.state.counters.filter(c => c.id !== counterId);
+    const counters = this.state.counters.filter((c) => c.id !== counterId);
     this.setState({ counters });
   };
 
-  onChangeParent = e => {
+  onChangeParent = (e) => {
     let searchQuery = e.target.value.toLowerCase();
     this.setState({ searchQuery });
   };
 
-  handleChangeSort = e => {
+  handleChangeSort = (e) => {
     this.setState({ sortValue: e.target.value });
+    console.log('sortValue', e.target.value);
   };
+
+  // handleFilterClick = e => {
+  //   this.setState({ filterValue: e.target.value });
+  // };
 
   render() {
     console.log('App - rendered');
@@ -64,8 +69,9 @@ class App extends Component {
         <NavBar
           onChange={this.onChangeParent}
           value={this.searchQuery}
-          totalCounters={this.state.counters.filter(c => c.value > 0).length}
+          totalCounters={this.state.counters.filter((c) => c.value > 0).length}
         />
+        <Filter onClick={this.handleFilterClick}></Filter>
         <Filter></Filter>
         <main className='paddingContent'>
           {/* <Counters

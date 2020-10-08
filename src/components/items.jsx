@@ -1,35 +1,36 @@
 import React, { useState, useEffect, Component } from 'react';
+import Item from './item';
 
 export default function Items(props) {
   const items = [
     {
-      link:
-        'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/01G5105348Z-G6Y1?pgw=1&pgwact=1',
+      link: require('../assets/hol-sweater-a.webp'),
+      link2: require('../assets/hol-sweater-b.webp'),
       name: 'Laurie Sweater Top',
       price: '138.00',
     },
     {
-      link:
-        'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/W93R61R1NW1-CLGM-ALT1',
+      link: require('../assets/alv-sweater-a.jpeg'),
+      link2: require('../assets/alv-sweater-b.jpeg'),
       name: 'Alivia Asymmetrical Ribbed Sweater',
       price: '79.00',
     },
     {
-      link:
-        'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/W9RR00R1NN2-G61B',
-      name: 'Pasha Cold-Shoulder Tie Blouse',
-      price: '158.00',
+      link: require('../assets/eco-bodysuit-a.webp'),
+      link2: require('../assets/eco-bodysuit-b.webp'),
+      name: 'Eco White Bodysuit',
+      price: '45.00',
     },
     {
-      link:
-        'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/W93R61R1NW1-CLGM-ALT1',
+      link: require('../assets/moto-a.webp'),
+      link2: require('../assets/moto-b.webp'),
       name: 'Alivia Asymmetrical Ribbed Sweater',
       price: '79.00',
     },
     {
-      link:
-        'https://res.cloudinary.com/guess-img/image/upload/w_600,h_807,c_fill,g_auto/f_auto,q_auto/fl_strip_profile/v1/NA/Style/ECOMM/W9RR00R1NN2-G61B',
-      name: 'Pasha Cold-Shoulder Tie Blouse',
+      link: require('../assets/dress-a.webp'),
+      link2: require('../assets/dress-b.jpeg'),
+      name: 'Raya Shirt Dress',
       price: '158.00',
     },
   ];
@@ -65,7 +66,8 @@ export default function Items(props) {
       <div className='row main'>
         {Object.keys(filteredItems).map((i) => (
           <div className='displayGrid' key={i}>
-            <img src={filteredItems[i].link} alt='item1' />
+            <Item i={i} filteredItems={filteredItems} items={items}></Item>
+            <img src={filteredItems[i].link} alt={`items${[i]}`} />
             <p className='listItemTitle fontSizeSmaller'>
               {filteredItems[i].name}
             </p>
