@@ -10,11 +10,12 @@ export default function Items(props) {
       price: '138.00',
     },
     {
-      link: require('../assets/alv-sweater-a.jpeg'),
-      link2: require('../assets/alv-sweater-b.jpeg'),
-      name: 'Alivia Asymmetrical Ribbed Sweater',
-      price: '79.00',
+      link: require('../assets/slip-a.webp'),
+      link2: require('../assets/slip-b.webp'),
+      name: 'Eco Lucy Cowl Neck Slip Dress',
+      price: '108.00',
     },
+  
     {
       link: require('../assets/eco-bodysuit-a.webp'),
       link2: require('../assets/eco-bodysuit-b.webp'),
@@ -33,6 +34,42 @@ export default function Items(props) {
       name: 'Raya Shirt Dress',
       price: '158.00',
     },
+    {
+      link: require('../assets/shoulder-a.webp'),
+      link2: require('../assets/shoulder-b.webp'),
+      name: 'Flora One-Shoulder Top',
+      price: '76.00',
+    }, 
+    {
+      link: require('../assets/alv-sweater-a.jpeg'),
+      link2: require('../assets/alv-sweater-b.jpeg'),
+      name: 'Alivia Asymmetrical Ribbed Sweater',
+      price: '79.00',
+    }, 
+    {
+      link: require('../assets/wrap-dress-a.webp'),
+      link2: require('../assets/wrap-dress-b.webp'),
+      name: 'Lucia Linen Wrap Dress',
+      price: '138.00',
+    },
+    
+    {
+      link: require('../assets/floral-maxi-a.webp'),
+      link2: require('../assets/floral-maxi-b.webp'),
+      name: 'Bali Floral Maxi Dress',
+      price: '138.00',
+    },
+   
+    {
+      link: require('../assets/romper-a.webp'),
+      link2: require('../assets/romper-b.webp'),
+      name: 'Lydia Long-Sleeve Romper',
+      price: '118.00',
+    }, 
+    
+   
+ 
+ 
   ];
 
   const [filteredItems, setFilteredItems] = useState([]);
@@ -63,11 +100,10 @@ export default function Items(props) {
 
   return (
     <div>
-      <div className='row main'>
+      <div className='main'>
         {Object.keys(filteredItems).map((i) => (
           <div className='displayGrid' key={i}>
             <Item i={i} filteredItems={filteredItems} items={items}></Item>
-            <img src={filteredItems[i].link} alt={`items${[i]}`} />
             <p className='listItemTitle fontSizeSmaller'>
               {filteredItems[i].name}
             </p>
